@@ -7,7 +7,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-import os
+import os,csv
 
 app = Flask(__name__)
 
@@ -49,7 +49,7 @@ def return_recent():
                 result_message += row[2] + ","+row[3] + ","+row[4] + ","+row[5] + ","+row[6]
             return reply_message
     except Exception as e:
-        return f"發生錯誤{e}"
+        return f"發生錯誤"
 
 
 if __name__ == "__main__":
