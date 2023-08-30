@@ -43,6 +43,7 @@ def return_recent():
             lines = list(reader)
             result = lines[-5:]
             reply_message = ""
+            return str(result)
             for row in result:
                 row = row.split(",")
                 result_message += row[1] +"("+ row[0] +"期)"
