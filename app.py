@@ -32,6 +32,11 @@ def handle_message(event):
     reply_message = user_message
     if user_message == "最近\n":
         reply_message = "近期開獎的球號為：1,2,3,4,5"
+        print(reply_message)
+    elif user_message == "最近\n":
+        reply_message = "近期開獎的球號為：12345"
+        print(reply_message)
+    print(reply_message)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_message)
