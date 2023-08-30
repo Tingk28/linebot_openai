@@ -28,12 +28,13 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
+    print(user_message)
     reply_message = user_message
-    if user_message == "最近":
+    if user_message == "最近\n":
         reply_message = "近期開獎的球號為：1,2,3,4,5"
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=user_message)
+        TextSendMessage(text=reply_message)
     )
 
 if __name__ == "__main__":
