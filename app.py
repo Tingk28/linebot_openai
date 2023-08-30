@@ -38,7 +38,7 @@ def handle_message(event):
     )
 def return_recent():
     try:
-        with open("history.csv", 'r', newline='', encoding='utf-8') as file:
+        with open("history.csv", 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             lines = list(reader)
             result = lines[-5:]
@@ -49,7 +49,7 @@ def return_recent():
                 result_message += row[2] + ","+row[3] + ","+row[4] + ","+row[5] + ","+row[6]
             return reply_message
     except Exception as e:
-        return f"發生錯誤"
+        return f"發生錯誤{e}"
 
 
 if __name__ == "__main__":
