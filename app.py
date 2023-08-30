@@ -29,18 +29,28 @@ def callback():
 def handle_message(event):
     user_message = event.message.text
     print(user_message)
-    reply_message = user_message*2
-    if user_message == "最近\n":
-        reply_message = "近期開獎的球號為：1,2,3,4,5"
-        print(reply_message)
-    elif user_message == "最近":
-        reply_message = "近期開獎的球號為：12345"
-        print(reply_message)
-    print(reply_message)
+    reply_message = user_message
+    if user_message == "最近":
+        reply_message = return_recent()
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_message)
     )
+def return_recent():
+    try:
+        with open(filename, 'r', newline='', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            lines = list(reader)
+            result = lines[-5:]
+            reply_message = ""
+            for row in result:
+                row = row.split(",")
+                result_message += row[1] +"("+ row[0] +"期)"
+                result_message += row[2] + ","+row[3] + ","+row[4] + ","+row[5] + ","+row[6]
+            return reply_message
+    except Exception as e:
+        return f"發生錯誤"
+
 
 if __name__ == "__main__":
     app.run()
