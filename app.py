@@ -14,7 +14,7 @@ app = Flask(__name__)
 # 替换为你自己的 Channel Access Token 和 Channel Secret
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-
+global lines
 try:
     with open("history.csv", 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
@@ -27,7 +27,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-def update(lines):
+def update():
     print("程式已執行！")
     
     url = "http://www.9800.com.tw/lotto539/statistics.html"  # 替換成你要爬取的網頁的URL
