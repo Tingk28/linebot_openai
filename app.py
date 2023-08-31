@@ -44,8 +44,8 @@ def return_recent():
             result = lines[-5:]
             reply_message = ""
             for row in result:
-                reply_message += row[1] +"("+ row[0] +"期)"
-                reply_message += row[2] + ","+row[3] + ","+row[4] + ","+row[5] + ","+row[6]
+                reply_message += row[1] +"("+ row[0] +"期)\n"
+                reply_message += row[2] + ","+row[3] + ","+row[4] + ","+row[5] + ","+row[6]+"\n"
             return reply_message
     except Exception as e:
         return f"發生錯誤{e}"
