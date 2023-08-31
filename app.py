@@ -66,8 +66,6 @@ def return_pair(pair):
         for i in pair:
             specified_numbers.append(int(i))
         matching_periods = []
-        print("specified_numbers")
-        print(specified_numbers)
         for i in range(1,len(lines) - 1):
             current_record = lines[i]
             next_record = lines[i + 1]
@@ -79,7 +77,7 @@ def return_pair(pair):
                 matching_periods.append((current_record[0:7], next_record[0:7]))
         print(matching_periods)
         reply_message = ""
-        for current_period, next_period in matching_periods:
+        for current_period, next_period in matching_periods[min(-40,len(matching_periods)):]:
             reply_message += current_period[1] + "(" + current_period[0] + "期)\n"
             reply_message += current_period[2] + "," + current_period[3] + "," + current_period[4] + "," + current_period[5] + "," + current_period[6] + "\n"
             reply_message += next_period[1] + "(" + next_period[0] + "期)\n"
