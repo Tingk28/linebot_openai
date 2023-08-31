@@ -40,6 +40,8 @@ def handle_message(event):
     reply_message = user_message
     if reply_message == "最近":
         reply_message = return_recent()
+    elif "次數" in reply_message:
+        reply_message = get_count(reply_message)
     else :
         user_message = user_message.replace(","," ").split()
         if len(user_message)>1:
@@ -87,7 +89,54 @@ def return_pair(pair):
     except Exception as e:
         return f"發生錯誤{e}"
 
+def get_count(message):
+    from collections import Counter
+    from itertools import combinations
+    message = message[2:].replace(","," ").split()#去除"次數"兩個字
+    specified_numbers = []
+    reply_message = ""
+    try:
+        for i in message:
+            specified_numbers.append(int(i))
+            matching_periods = []
+        for i in range(1,len(lines) - 1):
+            current_record = lines[i]
+            next_record = lines[i + 1]
 
+            current_numbers = list(map(int, current_record[2:7]))
+            next_numbers = list(map(int, next_record[2:7]))
+
+            if all(number in current_numbers for number in specified_numbers) :
+                matching_periods.append((current_record[0:7], next_record[0:7]))
+        # return reply_message
+    except Exception as e:
+        return f"發生錯誤{e}"
+    
+    # 將每一期的數字組合轉換為數字列表
+    number_lists = [list(map(int, record[1][2:7])) for record in data]
+
+    # 用來統計所有倆倆組合中出現的次數
+    pair_counter = Counter()
+
+    # 遍歷每一期的數字組合
+    for numbers in number_lists:
+        # 生成這一期的所有倆倆組合
+        pairs = combinations(numbers, 2)
+
+        # 將這一期的組合加入統計
+        pair_counter.update(pairs)
+
+    # 將 pair_counter.items() 以出現次數從大到小排序
+    sorted_pairs = sorted(pair_counter.items(), key=lambda item: item[1], reverse=True)
+
+    # 輸出排序後的每組組合以及出現次數
+    for pair, count in sorted_pairs:
+        if count<2:
+            break
+        reply_message += f"組合 {pair} 出現次數：{count}\n"
+    if reply_message == "":
+        reply_message = "沒有出現過兩次以上的組合"
+    return reply_message
 
 
 if __name__ == "__main__":
