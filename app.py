@@ -53,8 +53,6 @@ def update(lines):
                     text = td.text.replace("\n","").replace("\xa0","")
                     row_data.append(text)
                 new_data.append(row_data)
-
-
     except requests.exceptions.RequestException as e:
         print("發生錯誤:", e)
     
@@ -65,6 +63,7 @@ def update(lines):
         # 如果新行不存在，則將其寫入到 CSV 的最後
         if not new_row_exists:
             new_rows.append(new_row)
+    print("new_rows")
     print(new_rows)
     # 寫入新行到 history.csv
     if new_rows:
