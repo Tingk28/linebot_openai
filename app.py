@@ -106,7 +106,7 @@ def handle_message(event):
     if reply_message == "最近":
         reply_message = return_recent()
     elif reply_message == "更新":
-        reply_message = update(lines)
+        reply_message = update()
         try:
             with open("history.csv", 'r', encoding='utf-8') as file:
                 reader = csv.reader(file)
