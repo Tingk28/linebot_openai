@@ -111,6 +111,7 @@ def handle_message(event):
             with open("history.csv", 'r', encoding='utf-8') as file:
                 reader = csv.reader(file)
                 lines = list(reader)
+                print(lines[-5:])
         except Exception as e:
             print(f"讀取新檔案時發生錯誤{e}")
     elif "次數" in reply_message:
