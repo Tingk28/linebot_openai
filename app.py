@@ -82,7 +82,7 @@ def return_pair(pair):
             reply_message += current_period[2] + "," + current_period[3] + "," + current_period[4] + "," + current_period[5] + "," + current_period[6] + "\n"
             reply_message += next_period[1] + "(" + next_period[0] + "期)\n"
             reply_message += next_period[2] + "," + next_period[3] + "," + next_period[4] + "," + next_period[5] + "," + next_period[6] + "\n"
-            reply_message+="==================="
+            reply_message+="===================\n"
         
         return reply_message
     except Exception as e:
