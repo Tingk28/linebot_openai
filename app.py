@@ -100,6 +100,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global lines
     user_message = event.message.text
     print(user_message)
     reply_message = user_message
