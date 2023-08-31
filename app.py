@@ -127,6 +127,7 @@ def handle_message(event):
     )
 def return_recent():
     global lines
+    print(lines[-5:])
     try:
         result = lines[-5:]
         reply_message = ""
