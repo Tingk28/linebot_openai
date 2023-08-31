@@ -50,6 +50,7 @@ def update(lines):
                 row_data = []
                 td_elements = row.select('td')
                 for td in td_elements:
+                    text = td.text.replace("\n0","")
                     text = td.text.replace("\n","").replace("\xa0","")
                     row_data.append(text)
                 new_data.append(row_data)
