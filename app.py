@@ -68,7 +68,7 @@ def return_pair(pair):
         matching_periods = []
         print("specified_numbers")
         print(specified_numbers)
-        for i in range(len(lines) - 1):
+        for i in range(1,len(lines) - 1):
             current_record = lines[i]
             next_record = lines[i + 1]
 
