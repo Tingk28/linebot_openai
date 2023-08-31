@@ -51,7 +51,7 @@ def update(lines):
                 td_elements = row.select('td')
                 for td in td_elements:
                     text = td.text.replace("\n0","")
-                    text = text.replace("\n","").replace("\xa0","")
+                    text = text.replace("\n","").replace("\xa0","").replace("-","/")
                     row_data.append(text)
                 new_data.append(row_data)
     except requests.exceptions.RequestException as e:
