@@ -61,13 +61,33 @@ def return_recent():
         return f"發生錯誤"
 
 def return_pair(pair):
-    temp = []
+    specified_numbers = []
     try:
         for i in pair:
-            temp.append(int(i))
+            specified_numbers.append(int(i))
+        matching_periods = []
+
+        for i in range(len(lines) - 1):
+            current_record = lines[i]
+            next_record = lines[i + 1]
+
+            current_numbers = list(map(int, current_record[2:7]))
+            next_numbers = list(map(int, next_record[2:7]))
+
+            if all(number in current_numbers for number in specified_numbers) :
+                matching_periods.append((current_record[0:7], next_record[0:7]))
+
+        reply_message = ""
+        for current_period, next_period in matching_periods:
+            reply_message += current_period[1] + "(" + current_period[0] + "期)\n"
+            reply_message += current_period[2] + "," + current_period[3] + "," + current_period[4] + "," + current_period[5] + "," + current_period[6] + "\n"
+            reply_message += next_period[1] + "(" + next_period[0] + "期)\n"
+            reply_message += next_period[2] + "," + next_period[3] + "," + next_period[4] + "," + next_period[5] + "," + next_period[6] + "\n"
+            reply_message+="==================="
+        
+        return reply_message
     except Exception as e:
         return None
-        #return str(pair)
 
 
 
