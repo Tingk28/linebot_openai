@@ -28,6 +28,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def update():
+    global lines
     print("程式已執行！")
     
     url = "http://www.9800.com.tw/lotto539/statistics.html"  # 替換成你要爬取的網頁的URL
@@ -58,7 +59,6 @@ def update():
         print("發生錯誤:", e)
     
     new_rows = []
-    print(lines[-5:])
     for new_row in new_data:
         new_row_exists = any(new_row == row for row in lines)
 
