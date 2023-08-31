@@ -83,10 +83,7 @@ def schedule_thread():
             update()
         time.sleep(60)  # 每隔一分鐘檢查一次
 
-# 創建一個執行緒來執行 schedule_thread 函數
-thread = threading.Thread(target=schedule_thread)
-thread.daemon = True  # 設定為守護執行緒，程式結束時自動停止執行緒
-thread.start()
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -206,4 +203,8 @@ def get_count(message):
 
 
 if __name__ == "__main__":
+    # 創建一個執行緒來執行 schedule_thread 函數
+    thread = threading.Thread(target=schedule_thread)
+    thread.daemon = True  # 設定為守護執行緒，程式結束時自動停止執行緒
+    thread.start()
     app.run()
