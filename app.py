@@ -73,8 +73,10 @@ def update():
             writer = csv.writer(file)
             writer.writerows(new_rows)
         print("已寫入新行到 history.csv")
+        return "已寫入新行到 history.csv"
     else:
         print("所有資料均已存在")
+        return "所有資料均已存在"
 
 def schedule_thread():
     while True:
@@ -102,6 +104,8 @@ def handle_message(event):
     reply_message = user_message
     if reply_message == "最近":
         reply_message = return_recent()
+    elif reply_message == "更新":
+        reply_message = update()
     elif "次數" in reply_message:
         reply_message = get_count(reply_message)
     else :
