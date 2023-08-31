@@ -19,8 +19,8 @@ try:
     with open("history.csv", 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
         lines = list(reader)
-    except Exception as e:
-        print(f"發生錯誤{e}")
+except Exception as e:
+    print(f"發生錯誤{e}")
 
 
 @app.route("/callback", methods=['POST'])
@@ -43,10 +43,8 @@ def handle_message(event):
     else :
         user_message = user_message.replace(","," ").split()
         if len(user_message)>1:
-            reply_message = return_pair(user_message)
-            
-            
-            
+            result = return_pair(user_message)
+            reply_message = result if result
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_message)
@@ -63,7 +61,13 @@ def return_recent():
         return f"發生錯誤"
 
 def return_pair(pair):
-    return str(pair)
+    temp = []
+    try:
+        for i in pair:
+            temp.append(int(i))
+    except Exception as e:
+        return None
+        #return str(pair)
 
 
 
