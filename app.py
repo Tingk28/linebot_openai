@@ -149,7 +149,8 @@ def return_pair(pair):
             reply_message += next_period[1] + "(" + next_period[0] + "期)\n"
             reply_message += next_period[2] + "," + next_period[3] + "," + next_period[4] + "," + next_period[5] + "," + next_period[6] + "\n"
             reply_message+="===================\n"
-        
+        if reply_message =="":
+            reply_message = "沒有符合的開獎結果"
         return reply_message
     except Exception as e:
         return f"發生錯誤{e}"
