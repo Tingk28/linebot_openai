@@ -27,7 +27,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-def update():
+def update(lines):
     print("程式已執行！")
     
     url = "http://www.9800.com.tw/lotto539/statistics.html"  # 替換成你要爬取的網頁的URL
@@ -110,7 +110,7 @@ def handle_message(event):
     if reply_message == "最近":
         reply_message = return_recent()
     elif reply_message == "更新":
-        reply_message = update()
+        reply_message = update(lines)
     elif "次數" in reply_message:
         reply_message = get_count(reply_message)
     else :
