@@ -62,6 +62,7 @@ def update(lines):
 
         # 如果新行不存在，則將其寫入到 CSV 的最後
         if not new_row_exists:
+            print(new_row)
             new_rows.append(new_row)
     print("new_rows")
     print(new_rows)
