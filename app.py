@@ -113,7 +113,7 @@ def get_count(message):
         return f"發生錯誤{e}"
     
     # 將每一期的數字組合轉換為數字列表
-    number_lists = [list(map(int, record[1][2:7])) for record in data]
+    number_lists = [list(map(int, record[1][2:7])) for record in matching_periods]
 
     # 用來統計所有倆倆組合中出現的次數
     pair_counter = Counter()
