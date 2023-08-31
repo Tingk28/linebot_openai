@@ -57,6 +57,7 @@ def update(lines):
         print("發生錯誤:", e)
     
     new_rows = []
+    print(lines[-5:])
     for new_row in new_data:
         new_row_exists = any(new_row == row for row in lines)
 
