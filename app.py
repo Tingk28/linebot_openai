@@ -88,7 +88,7 @@ def return_pair(pair):
         
         return reply_message
     except Exception as e:
-        return None
+        return f"發生錯誤{e}"
 
 
 
