@@ -44,7 +44,7 @@ def handle_message(event):
         user_message = user_message.replace(","," ").split()
         if len(user_message)>1:
             result = return_pair(user_message)
-            reply_message = result if result
+            reply_message = result if result else reply_message
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_message)
