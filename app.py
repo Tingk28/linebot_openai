@@ -73,6 +73,12 @@ def update():
             writer = csv.writer(file)
             writer.writerows(new_rows)
         print("已寫入新行到 history.csv")
+        try:
+            with open("history.csv", 'r', encoding='utf-8') as file:
+                reader = csv.reader(file)
+                lines = list(reader)
+        except Exception as e:
+            print(f"讀取新檔案時發生錯誤{e}")
         return "已寫入新行到 history.csv"
     else:
         print("所有資料均已存在")
