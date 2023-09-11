@@ -8,6 +8,10 @@ from linebot.exceptions import (
 from linebot.models import *
 
 import os,csv
+import threading
+import time
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -22,10 +26,7 @@ try:
 except Exception as e:
     print(f"發生錯誤{e}")
 
-import threading
-import time
-import requests
-from bs4 import BeautifulSoup
+
 
 def update():
     global lines
@@ -219,6 +220,7 @@ def get_count(message):
 
 if __name__ == "__main__":
     # 創建一個執行緒來執行 schedule_thread 函數
+    update()
     thread = threading.Thread(target=schedule_thread)
     thread.daemon = True  # 設定為守護執行緒，程式結束時自動停止執行緒
     thread.start()
